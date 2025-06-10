@@ -1,0 +1,5 @@
+*.txt text=auto
+*.html text=auto
+*.js text=auto
+*.css text=auto
+*.php text=auto
