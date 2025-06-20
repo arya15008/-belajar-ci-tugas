@@ -12,7 +12,7 @@ class RedirectController extends BaseController
         $session = session();
 
         if ($session->get('isLoggedIn')) {
-            return redirect()->to('/home');
+            return redirect()->to('/');
         }
 
         return redirect()->to('/login');

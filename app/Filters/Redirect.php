@@ -20,8 +20,8 @@ class Redirect implements FilterInterface
 
         if ($session->get('isLoggedIn')) {
             $uri = service('uri');
-            if ($uri->getSegment(1) === '/home') {
-                return redirect()->to('/home');
+            if ($uri->getSegment(1) === '/') {
+                return redirect()->to('/');
             }
         }
     }
