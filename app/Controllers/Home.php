@@ -37,6 +37,7 @@ class Home extends BaseController
                     $product[$item['id']] = $detail;
                 }
             }
+            
         }
 
         $data['product'] = $product;

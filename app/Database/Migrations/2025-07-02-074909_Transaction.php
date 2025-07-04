@@ -48,7 +48,7 @@ class Transaction extends Migration
         ]);
 
         $this->forge->addKey('id', TRUE);
-        $this->forge->createTable('transaction');
+        $this->forge->createTable('transaction', true);
     }
 
     public function down()

@@ -40,6 +40,7 @@ class ApiController extends ResourceController
         array_walk($headers, function (&$value, $key) {
             $value = $value->getValue();
         });
+        
 
         if(array_key_exists("Key", $headers)){
             if ($headers["Key"] == $this->apikey) {

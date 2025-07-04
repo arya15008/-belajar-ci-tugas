@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Database\Migrations\Diskon;
+use App\Models\Diskon as ModelsDiskon;
 use CodeIgniter\HTTP\ResponseInterface;
 
 use App\Models\UserModel;
@@ -10,15 +12,17 @@ use App\Models\UserModel;
 class AuthController extends BaseController
 {
     protected $user;
+    protected $diskonDate;
 
     function __construct()
     {
         helper('form');
         $this->user= new UserModel();
+        $this->diskonDate = new ModelsDiskon();
     }
 
     public function login()
-{
+    {
     if ($this->request->getPost()) {
         $rules = [
             'username' => 'required|min_length[6]',
@@ -30,6 +34,8 @@ class AuthController extends BaseController
             $password = $this->request->getVar('password');
 
             $dataUser = $this->user->where(['name' => $username])->first(); //pasw 1234567
+            $diskon =  $this->diskonDate->where(['tanggal' => date('Y-m-d')])->first();
+
 
             if ($dataUser) {
                 if (password_verify($password, $dataUser['password'])) {
@@ -38,6 +44,11 @@ class AuthController extends BaseController
                         'role' => $dataUser['role'],
                         'isLoggedIn' => TRUE
                     ]);
+                    if ($diskon) {
+                        session()->set([
+                            'diskon' => $diskon['nominal']
+                        ]);
+                    }
 
                     return redirect()->to(base_url('/'));
                 } else {

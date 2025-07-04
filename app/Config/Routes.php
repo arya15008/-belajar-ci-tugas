@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index', ['filter' => 'auth', 'redirect']);
+$routes->get('/', 'Home::index', ['filter' => ['auth', 'redirect']]);
 
 $routes->get('/login', 'AuthController::login');
 $routes->post('/login', 'AuthController::login');
@@ -33,10 +33,22 @@ $routes->group('/kategoriproduk', ['filter' => 'auth'], function ($routes) {
     $routes->post('edit/(:any)', 'KategoriProdukController::edit/$1');
     $routes->get('delete/(:any)', 'KategoriProdukController::delete/$1');
 });
+
+$routes->group('/diskon', ['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'DiskonController::index');
+    $routes->post('/', 'DiskonController::create');
+    $routes->post('edit/(:any)', 'DiskonController::edit/$1');
+    $routes->get('delete/(:any)', 'DiskonController::delete/$1');
+});
+
 $routes->get('get-location', 'TransaksiController::getLocation', ['filter' => 'auth']);
 $routes->get('get-cost', 'TransaksiController::getCost', ['filter' => 'auth']);
+
 $routes->post('buy', 'TransaksiController::buy', ['filter' => 'auth']);
 $routes->get('/faq', 'FaqController::index', ['filter' => 'auth']);
 $routes->get('/redirect', 'RedirectController::index', ['filter' => 'auth']);
+
 $routes->get('profile', 'Home::profile', ['filter' => 'auth']);
-$routes->resource('api', ['controller' => 'apiController']);
+
+// API
+$routes->resource('api', ['controller' => 'ApiController']);

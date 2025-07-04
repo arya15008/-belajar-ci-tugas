@@ -34,7 +34,7 @@ class TransactionDetail extends Migration
                 'type' => 'DOUBLE',
                 'null' => TRUE,
             ],
-            'subtotal_harga' => [
+            'subtotal' => [
                 'type' => 'DOUBLE',
                 'null' => FALSE,
             ],
@@ -49,7 +49,7 @@ class TransactionDetail extends Migration
         ]);
 
         $this->forge->addKey('id', TRUE);
-        $this->forge->createTable('transaction_detail');
+        $this->forge->createTable('transaction_detail', true);
     }
 
     public function down()

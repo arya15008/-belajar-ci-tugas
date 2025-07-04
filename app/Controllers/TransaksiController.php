@@ -41,7 +41,7 @@ class TransaksiController extends BaseController
             'options'   => array('foto' => $this->request->getPost('foto'))
         ));
         session()->setflashdata('success', 'Produk berhasil ditambahkan ke keranjang. (<a href="' . base_url() . 'keranjang">Lihat</a>)');
-        return redirect()->to(base_url('/home'));
+        return redirect()->to(base_url('/'));
     }
     public function buy()
     {
@@ -65,7 +65,7 @@ class TransaksiController extends BaseController
                     'transaction_id' => $last_insert_id,
                     'product_id' => $value['id'],
                     'jumlah' => $value['qty'],
-                    'diskon' => 0,
+                    'diskon' => (session()->has('diskon') ? session()->get('diskon') : 0),
                     'subtotal' => $value['qty'] * $value['price'],
                     'created_at' => date("Y-m-d H:i:s"),
                     'updated_at' => date("Y-m-d H:i:s")
@@ -76,7 +76,7 @@ class TransaksiController extends BaseController
 
             $this->cart->destroy();
     
-            return redirect()->to(base_url("/home"));
+            return redirect()->to(base_url("/"));
         }
     }
     public function checkout()
