@@ -20,7 +20,7 @@ class Transaction extends Migration
                 'constraint' => 255,
                 'null' => FALSE,
             ],
-            'total_harga' => [
+            'total' => [
                 'type' => 'DOUBLE',
                 'null' => FALSE,
             ],
@@ -48,7 +48,7 @@ class Transaction extends Migration
         ]);
 
         $this->forge->addKey('id', TRUE);
-        $this->forge->createTable('transaction', true);
+        $this->forge->createTable('transactions', true);
     }
 
     public function down()

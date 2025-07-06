@@ -15,7 +15,7 @@ class Product extends Migration
                 'unsigned' => TRUE,
                 'auto_increment' => TRUE
             ],
-            'nama' => [
+            'name' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255,
                 'null' => FALSE,
@@ -44,13 +44,13 @@ class Product extends Migration
         ]);
 
         $this->forge->addKey('id', TRUE);
-        $this->forge->createTable('product', true);
+        $this->forge->createTable('produks', true);
     }
 
     //--------------------------------------------------------------------
 
     public function down()
     {
-        $this->forge->dropTable('product');
+        $this->forge->dropTable('produks');
     }
 }

@@ -1,61 +1,98 @@
-# Proyek Toko
+# 🛒 Aplikasi Toko Sederhana (CodeIgniter 4)
 
-Ini adalah proyek sederhana aplikasi toko berbasis web menggunakan CodeIgniter 4. Proyek ini dibuat untuk memenuhi tugas kuliah pada mata kuliah Pemrograman Web Lanjut.
+Aplikasi web toko sederhana yang dibangun menggunakan framework **CodeIgniter 4**, dibuat untuk memenuhi tugas mata kuliah **Pemrograman Web Lanjut**. Aplikasi ini mendukung fitur manajemen produk, transaksi, diskon otomatis, dan API Web Service.
 
-## 📌 Fitur
+---
 
-Beberapa fitur yang sudah tersedia dalam aplikasi ini antara lain:
+## ✨ Fitur Aplikasi
 
-- Login dan Logout untuk pengguna
-- Hak akses berdasarkan role (admin dan user)
-- Dashboard dengan informasi transaksi
-- Manajemen kategori produk (tambah, edit, hapus)
-- Manajemen produk (tambah, edit, hapus, termasuk foto)
-- Transaksi pembelian produk
-- Riwayat transaksi pengguna
-- Fitur diskon otomatis
-- Halaman profil untuk melihat riwayat pembelian
-- API endpoint (`/api`) untuk mendapatkan data transaksi dan detailnya (dengan API Key)
+- 🔐 Login & Logout pengguna
+- 👥 Role akses: **Admin** dan **User**
+- 📊 Dashboard transaksi
+- 🗂️ Manajemen kategori produk (CRUD)
+- 🛍️ Manajemen produk (CRUD) + upload foto
+- 💸 Transaksi pembelian & diskon otomatis
+- 🧾 Riwayat transaksi pengguna
+- 🙍‍♂️ Halaman profil pengguna
+- 🌐 API endpoint (`/api`) dengan autentikasi API Key
 
-## ⚙️ Installasi
+---
 
-Berikut langkah-langkah untuk menjalankan proyek ini:
+## ⚙️ Cara Instalasi
 
-1. Clone repository:
+Berikut langkah-langkah untuk menjalankan proyek di lokal:
+
+1. **Clone repository:**
 
    ```bash
-   git clone https://github.com/Cyancyrt/belajar-ci-uts.git
-
+   git clone https://github.com/arya15008/-belajar-ci-tugas
    ```
 
-2. composer install
+2. **Masuk ke direktori project & install dependensi:**
 
-3. php spark migrate
+   ```bash
+   cd belajar-ci-tugas
+   composer install
+   ```
 
-4. php spark db:seed UserSeeder
-   php spark db:seed ProductCategorySeeder.php
+3. **Buat file `.env` dan atur koneksi database.**  
+   Contoh pengaturan:
+
+   ```
+   database.default.hostname = localhost
+   database.default.database = nama_database
+   database.default.username = root
+   database.default.password = 
+   database.default.DBDriver = MySQLi
+   ```
+
+4. **Jalankan migrasi dan seeder:**
+
+   ```bash
+   php spark migrate
+   php spark db:seed UserSeeder
+   php spark db:seed ProductCategorySeeder
    php spark db:seed ProductSeeder
    php spark db:seed Diskon
-
-5. php spark serve
-
-6. akses di http://localhost:8081/
    ```
 
+5. **Jalankan server lokal:**
+
+   ```bash
+   php spark serve
    ```
 
-## 🗂️ STRUKTUR PROYEK
+6. **Akses aplikasi di browser:**  
+   `http://localhost:8080`
 
-/app
-/Controllers -> Logic backend, seperti Auth, Produk, Transaksi
-/Models -> Berisi file model database (ProductModel, UserModel, dll)
-/Views -> File tampilan (HTML+PHP), seperti halaman utama, login, dashboard
-/Database
-/Migrations -> File migrasi untuk membuat tabel
-/Seeds -> File seeder untuk isi data awal
-/public -> Folder publik (CSS, JS, gambar, index.php)
-/writable -> Cache, logs, session
-/.env -> File konfigurasi lingkungan (tidak dikomit ke git)
+---
 
+## 📁 Struktur Proyek
 
-Terima kasih sudah membaca. Kalau ada error, mungkin saya juga belum tahu 😅
+```
+belajar-ci-tugas/
+│
+├── app/                 # Berisi Controller, Model, View
+├── public/              # Folder akses publik (CSS, JS, gambar)
+├── database/
+│   ├── Migrations       # Struktur tabel database
+│   └── Seeds            # Data awal aplikasi
+├── writable/            # Log, cache, session, dll
+├── .env                 # Konfigurasi environment
+└── composer.json        # Konfigurasi dependensi PHP
+```
+
+---
+
+## 👤 Pengembang
+
+- **Nama:** Arya Febi Prasetyawan  
+- **NIM:** A11.2023.15008  
+- **Mata Kuliah:** Pemrograman Web Lanjut
+
+---
+
+## 📌 Catatan
+
+> Project ini masih dalam pengembangan tahap awal.  
+> Silakan gunakan, ubah, dan kembangkan sesuai kebutuhan.
